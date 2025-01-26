@@ -1,38 +1,43 @@
-document.getElementById('memoryForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
+// Function to save memory to local storage
+function saveMemory(topic, details) {
+  const memories = JSON.parse(localStorage.getItem('memories')) || [];
+  const newMemory = { topic, details, date: new Date().toLocaleString() };
+  memories.push(newMemory);
+  localStorage.setItem('memories', JSON.stringify(memories));
+}
 
-  const memoryText = document.getElementById('memoryText').value;
-
-  if (!memoryText) return;
-
-  // Post memory to the server
-  await fetch('/add-memory', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ memory: memoryText }),
-  });
-
-  // Fetch updated memories
-  loadMemories();
-
-  // Clear textarea
-  document.getElementById('memoryText').value = '';
-});
-
-async function loadMemories() {
-  const res = await fetch('/get-memories');
-  const data = await res.json();
-
+// Function to load memories from local storage
+function loadMemories() {
+  const memories = JSON.parse(localStorage.getItem('memories')) || [];
   const memoryContainer = document.getElementById('memories');
   memoryContainer.innerHTML = '';
-
-  data.memories.forEach(memory => {
+  memories.forEach(memory => {
     const memoryDiv = document.createElement('div');
     memoryDiv.className = 'memory';
-    memoryDiv.textContent = memory;
+    memoryDiv.innerHTML = `
+      <h3>${memory.topic}</h3>
+      <small>${memory.date}</small>
+      <p>${memory.details}</p>
+    `;
     memoryContainer.appendChild(memoryDiv);
   });
 }
+
+// Handle form submission
+document.getElementById('memoryForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const topic = document.getElementById('topic').value;
+  const details = document.getElementById('details').value;
+
+  if (topic && details) {
+    saveMemory(topic, details);
+    loadMemories();
+
+    // Clear form
+    document.getElementById('topic').value = '';
+    document.getElementById('details').value = '';
+  }
+});
 
 // Load memories on page load
 loadMemories();
