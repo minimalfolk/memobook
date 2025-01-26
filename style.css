@@ -14,6 +14,27 @@ header {
   text-align: center;
 }
 
+header h1 {
+  margin: 0;
+}
+
+.sub-header {
+  margin-top: 10px;
+  background: #0056b3;
+  padding: 10px 0;
+}
+
+.sub-header a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 16px;
+}
+
+.sub-header a:hover {
+  text-decoration: underline;
+}
+
 .search-bar {
   margin-top: 10px;
 }
@@ -25,7 +46,7 @@ header {
   border-radius: 5px;
 }
 
-.container, main, footer {
+main {
   max-width: 800px;
   margin: 20px auto;
   padding: 10px;
@@ -84,30 +105,4 @@ footer img {
 footer p {
   margin-top: 10px;
   font-size: 14px;
-}
-
-/* Modal Styles */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 400px;
-  text-align: center;
-}
-
-.modal-buttons button {
-  margin: 5px;
-  padding: 10px 20px;
 }
