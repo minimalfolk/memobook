@@ -9,13 +9,19 @@
 <body>
   <header>
     <h1>Memory Keeper</h1>
+    <nav class="sub-header">
+      <a href="#addMemory">Add Memory</a>
+      <a href="#allMemories">All Memory</a>
+      <a href="#favoriteMemories">Favorite Memory</a>
+    </nav>
     <div class="search-bar">
       <input type="text" id="searchInput" placeholder="Search memories by topic, category, or tag">
     </div>
   </header>
 
   <main>
-    <section>
+    <!-- Add Memory Section -->
+    <section id="addMemory">
       <h2>Add New Memory</h2>
       <form id="memoryForm">
         <select id="category" required>
@@ -33,11 +39,13 @@
       </form>
     </section>
 
-    <section id="myMemories">
-      <h2>My Memories</h2>
+    <!-- All Memories Section -->
+    <section id="allMemories">
+      <h2>All Memories</h2>
       <div id="memories"></div>
     </section>
 
+    <!-- Favorite Memories Section -->
     <section id="favoriteMemories" style="display: none;">
       <h2>Favorite Memories</h2>
       <div id="favorites"></div>
