@@ -1,53 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memojar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <div class="logo">Memojar</div>
-  </header>
+document.getElementById('memoryForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
 
-  <main>
-    <!-- Add Memory Section -->
-    <section id="add-memory">
-      <h2>Add a Memory</h2>
-      <form id="memory-form">
-        <label for="memory-category">Category</label>
-        <select id="memory-category">
-          <option value="Personal">Personal</option>
-          <option value="Family">Family</option>
-          <option value="Friends">Friends</option>
-          <option value="Achievement">Achievement</option>
-          <option value="Travel">Travel</option>
-        </select>
+  const memoryText = document.getElementById('memoryText').value;
 
-        <label for="memory-topic">Memory Topic</label>
-        <input type="text" id="memory-topic" placeholder="Enter memory topic" required>
+  if (!memoryText) return;
 
-        <label for="memory-details">Details</label>
-        <textarea id="memory-details" placeholder="Write about your memory..." required></textarea>
+  // Post memory to the server
+  await fetch('/add-memory', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ memory: memoryText }),
+  });
 
-        <label for="memory-tag">Tag (Optional)</label>
-        <input type="text" id="memory-tag" placeholder="Enter tag (optional)">
+  // Fetch updated memories
+  loadMemories();
 
-        <button type="submit">Save Memory</button>
-      </form>
-    </section>
+  // Clear textarea
+  document.getElementById('memoryText').value = '';
+});
 
-    <!-- Display Memories Section -->
-    <section id="memory-list">
-      <h2>My Memories</h2>
-      <div id="memories">
-        <!-- Memories will appear here -->
-      </div>
-    </section>
-  </main>
+async function loadMemories() {
+  const res = await fetch('/get-memories');
+  const data = await res.json();
 
-  <script src="script.js"></script>
-</body>
-</html>
+  const memoryContainer = document.getElementById('memories');
+  memoryContainer.innerHTML = '';
+
+  data.memories.forEach(memory => {
+    const memoryDiv = document.createElement('div');
+    memoryDiv.className = 'memory';
+    memoryDiv.textContent = memory;
+    memoryContainer.appendChild(memoryDiv);
+  });
+}
+
+// Load memories on page load
+loadMemories();
