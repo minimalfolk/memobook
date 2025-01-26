@@ -1,0 +1,74 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #222;
+  padding: 10px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.logo {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#memory-list {
+  margin-top: 40px;
+}
+
+.memory-card {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.memory-card h3 {
+  margin: 0;
+}
+
+.memory-card p {
+  font-size: 14px;
+}
