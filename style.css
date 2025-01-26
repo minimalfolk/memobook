@@ -1,25 +1,44 @@
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  background: #f4f4f4;
+  color: #333;
 }
 
-.container {
+header {
+  background: #007BFF;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.search-bar {
+  margin-top: 10px;
+}
+
+.search-bar input {
+  padding: 10px;
+  width: 90%;
+  border: none;
+  border-radius: 5px;
+}
+
+.container, main, footer {
   max-width: 800px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 10px;
 }
 
-form {
+section {
   margin-bottom: 20px;
 }
 
-input, textarea, button {
-  display: block;
+input, select, textarea, button {
   width: 100%;
-  margin-bottom: 10px;
   padding: 10px;
+  margin: 5px 0;
   font-size: 16px;
 }
 
@@ -35,36 +54,60 @@ button:hover {
   background: #0056b3;
 }
 
-.memory {
-  background: #f9f9f9;
+.memory, .favorite {
+  background: #fff;
   margin: 10px 0;
   padding: 15px;
-  border: 1px solid #ddd;
   border-radius: 5px;
-}
-
-.memory h3 {
-  margin: 0 0 10px;
-}
-
-.memory small {
-  color: #666;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 footer {
-  margin-top: 50px;
-  padding: 20px;
   background: #333;
   color: white;
   text-align: center;
+  padding: 20px;
 }
 
 footer a {
   color: #00aaff;
-  text-decoration: none;
   margin: 0 10px;
+  text-decoration: none;
 }
 
-footer a:hover {
-  text-decoration: underline;
+footer img {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+}
+
+footer p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-buttons button {
+  margin: 5px;
+  padding: 10px 20px;
 }
