@@ -7,21 +7,57 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <header>
     <h1>Memory Keeper</h1>
-    <form id="memoryForm">
-      <input type="text" id="topic" placeholder="Enter memory topic" required />
-      <textarea id="details" placeholder="Enter memory details" required></textarea>
-      <button type="submit">Save Memory</button>
-    </form>
-    <div id="memories"></div>
-  </div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search memories by topic, category, or tag">
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Add New Memory</h2>
+      <form id="memoryForm">
+        <select id="category" required>
+          <option value="" disabled selected>Select Category</option>
+          <option value="personal">Personal</option>
+          <option value="family">Family</option>
+          <option value="friends">Friends</option>
+          <option value="achievement">Achievement</option>
+          <option value="travel">Travel</option>
+        </select>
+        <input type="text" id="topic" placeholder="Enter memory topic" required>
+        <textarea id="details" placeholder="Enter memory details" required></textarea>
+        <input type="text" id="tag" placeholder="Enter tag (optional)">
+        <button type="submit">Save Memory</button>
+      </form>
+    </section>
+
+    <section id="myMemories">
+      <h2>My Memories</h2>
+      <div id="memories"></div>
+    </section>
+
+    <section id="favoriteMemories" style="display: none;">
+      <h2>Favorite Memories</h2>
+      <div id="favorites"></div>
+    </section>
+  </main>
 
   <footer>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-    <a href="#">Privacy</a>
-    <a href="#">Terms and Conditions</a>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms and Conditions</a>
+    </div>
+    <div class="social-media">
+      <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+      <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+      <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+      <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+    </div>
+    <p>&copy; 2025 Memojar</p>
   </footer>
 
   <script src="script.js"></script>
